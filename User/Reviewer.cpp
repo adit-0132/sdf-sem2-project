@@ -40,7 +40,6 @@ class Reviewer: public User{
                     this->id = user.users[i]->id;
                     this->name = user.users[i]->name;
                     this->password = user.users[i]->password;
-                    this->reviews = reviewList.reviewList[i].second;
                     cout<<"Logged IN!";
                 }
                 else{
@@ -49,6 +48,12 @@ class Reviewer: public User{
             }
             else{
                 cout<< "User not found\n";
+            }
+        }
+
+        for(int i =0;i<reviewList.reviewList.size() ;i++){
+            if(reviewList.reviewList[i].first == this->email){
+                this->reviews = reviewList.reviewList[i].second;
             }
         }
 
