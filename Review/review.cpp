@@ -5,6 +5,9 @@ class Review{
     string title;
     string review;
     int stars;
+    Product product;
+    
+
     public:
     Review(string title, string review, int stars){
         this->title = title;

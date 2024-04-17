@@ -1,7 +1,6 @@
-// #include<iostream>
 #include <cstdlib>
 #include <ctime>
-// using namespace std;
+#include<vector>
 
 class User{
     string name;
@@ -11,6 +10,7 @@ class User{
     int age;
     string accountType;
     string otp;
+    userList user;
     public:
     void setName(string name){
         this->name = name;
@@ -43,7 +43,7 @@ class User{
         int choice;
         cout<< "Enter your choice: ";
         cin>>choice;
-                if(choice == 1){
+        if(choice == 1){
             accountType = "Customer";
         }
         else if(choice == 2){
@@ -91,6 +91,8 @@ class User{
                 }
                 //resend otp
             }
+
+            user.addUser(this);
             cout << "Signup Successful\n";
         }
         else{
@@ -106,18 +108,21 @@ class User{
         }
     }
 
-    void login(){
-        string email;
-        string password;
-        cout << "Email: ";
-        cin>>email;
-        cout << "Password: ";
-        cin>>password;
-        if(this->email == email && this->password == password){
-            cout << "Login Successful\n";
-        }
-        else{
-            cout << "Invalid Email or Password\n";
-        }
+    string getEmail(){
+        return email;
+    }
+
+    virtual void login() = 0;
+
+    void logout{
+        cout<< "Logged out\n";
+    }
+};
+
+class userList{
+    public:
+    vector<User *  >users;
+    void addUser(User *  user){
+        users.push_back(user);
     }
 };
