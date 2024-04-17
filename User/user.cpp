@@ -114,14 +114,14 @@ class User{
 
     virtual void login() = 0;
 
-    void logout{
+    void logout(){
         cout<< "Logged out\n";
     }
 };
 
 class userList{
     public:
-    vector<User *  >users;
+    vector<User *>users;
     void addUser(User *  user){
         users.push_back(user);
     }

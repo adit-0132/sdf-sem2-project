@@ -15,8 +15,13 @@ class Reviewer: public User{
         cin>>title;
         cout<< "Review: ";
         cin>>review;
-        cout<< "Stars: ";
+        stars:
+        cout<< "Stars(out of 5): ";
         cin>>stars;
+        if(stars>5){
+            cout<<"Stars should be less than 5\n";
+            goto stars;
+        }
         Review reviewObj = new Review(title, review, stars);
         reviews.push_back(reviewObj);
         points++;
@@ -32,14 +37,13 @@ class Reviewer: public User{
         cin>>passwordLogin;
 
         for(int i =0;i<user.users.size() ;i++){
-            if(user.users[i] == emailLogin){
-                if(user.users[i] == passwordLogin){
-                    this->accountType = user.users[i]->accountType;
-                    this->age = user.users[i]->age;
-                    this->email = user.users[i]->email;
-                    this->id = user.users[i]->id;
-                    this->name = user.users[i]->name;
-                    this->password = user.users[i]->password;
+            if(user.users[i]->email == emailLogin){
+                if(user.users[i]->password == passwordLogin){
+                    setName(user.users[i]->accountType);
+                    setName(user.users[i]->name);
+                    setEmail(user.users[i]->email);
+                    setPassword(user.users[i]->password);
+                    setAge(user.users[i]->age);
                     cout<<"Logged IN!";
                 }
                 else{
@@ -59,9 +63,53 @@ class Reviewer: public User{
 
     }
 
+    void getReviews(){
+        for(int i =0;i<reviews.size() ;i++){
+            cout<< "Title: "<<reviews[i].getTitle()<<endl;
+            cout<< "Review: "<<reviews[i].getReview()<<endl;
+            cout<< "Stars: "<<reviews[i].getStars()<<endl;
+        }
+    }
+
+    void updateReview(){
+        string title;
+        string review;
+        int stars;
+        cout<< "Title: ";
+        cin>>title;
+        cout<< "Review: ";
+        cin>>review;
+        stars:
+        cout<< "Stars(out of 5): ";
+        cin>>stars;
+        if(stars>5){
+            cout<<"Stars should be less than 5\n";
+            goto stars;
+        }
+        for(int i =0;i<reviews.size() ;i++){
+            if(reviews[i].getTitle() == title){
+                reviews[i].setTitle(title);
+                reviews[i].setReview(review);
+                reviews[i].setStars(stars);
+            }
+        }
+    }
+
+    void deleteReview(){
+        string title;
+        cout<< "Title: ";
+        cin>>title;
+        for(int i =0;i<reviews.size() ;i++){
+            if(reviews[i].getTitle() == title){
+                reviews.erase(reviews.begin() + i);
+            }
+        }
+    }
+
     void logout(){
         this->reviews.clear();
     }
+
     int getPoints(){
         return points;
     }
