@@ -1,12 +1,22 @@
 #include "./user.cpp"
 #include "../Review/review.cpp"
 #include <vector>
+#include <cstdlib>
+#include <ctime>
+#include "rewards.cpp"
+#include <ctime>
 
 class Reviewer: public User{
     vector<Review> reviews;
-    ReviewerList reviewList;
     int points;
+    vector<Rewards> rewards;
     public:
+    vector<Review> getReviewsVector(){
+        return reviews;
+    }
+    vector<Rewards> getRewardsVector(){
+        return rewards;
+    }
     void addReview(){
         string title;
         string review;
@@ -25,7 +35,6 @@ class Reviewer: public User{
         Review reviewObj = new Review(title, review, stars);
         reviews.push_back(reviewObj);
         points++;
-        reviewList.addReviewer(this->getEmail() ,reviews);
     }
 
     void login(){
@@ -58,6 +67,12 @@ class Reviewer: public User{
         for(int i =0;i<reviewList.reviewList.size() ;i++){
             if(reviewList.reviewList[i].first == this->email){
                 this->reviews = reviewList.reviewList[i].second;
+            }
+        }
+
+        for(int i =0;i<rewardList.rewardList.size() ;i++){
+            if(rewardList.rewardList[i].first == this->email){
+                this->rewards = rewardList.rewardList[i].second;
             }
         }
 
@@ -113,6 +128,54 @@ class Reviewer: public User{
     int getPoints(){
         return points;
     }
+
+    void setPoints(int points){
+        this->points = points; 
+    }
+    void redeemRewards(int choice){
+        if(points<20){
+            "No reward available\n";
+        }
+        if(choice == 1){
+            cout<< "10 percent discount coupon redeemed\n";
+            setPoints(points - 20);
+        }
+        else if(choice == 2){
+            cout<< "20 percent discount coupon redeemed\n";
+            setPoints(points - 30);
+        }
+        else if(choice == 3){
+            cout<< "Movie tickets redeemed\n";
+            setPoints(points - 40);
+        }
+        else{
+            cout<< "100Rs cashback redeemed\n";
+            setPoints(points - 50);
+        }
+        
+        int id = time(0);
+        rewards.push_back(Rewards(getEmail() , id));
+    }
+
+    void getRewards(){
+            if(points < 20){
+                cout<< "No rewards available\n";
+            }
+            if(points == 20){
+                cout<< "10 percent discount coupon\n";
+            }
+            if(points <= 30){
+                cout<< "20 percent discount coupon\n";
+            } 
+            if(points <= 40){
+                cout<<"Movie tickets\n";
+            }
+            if(points <= 50){
+                cout<< "100Rs cashback\n";
+            }
+
+    }
+
 };
 
 

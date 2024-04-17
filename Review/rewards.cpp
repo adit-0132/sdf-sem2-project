@@ -1,16 +1,17 @@
-// class Rewards{
-//     public:
-//         void getRewards(int points){
-//             if(points < 10){
-//                 cout<< "No rewards available\n";
-//             }else if(points <= 20){
-//                 return 1;
-//             }else if(points < 30){
-//                 return 2;
-//             }else if(points < 40){
-//                 return 3;
-//             }else if(points < 50){
-//                 return 4;
-//             }
-//     }
-// };
+class Rewards{
+    public:
+    Rewards(string name , int id){
+        this->name = name;
+        this->id = id;
+    }
+    string name;
+    int id;
+};
+
+class rewardList{
+    public:
+    vector<pair<string , vector<Rewards>> rewardList;
+    void addRewards(string email , vector<Rewards> rewards){
+        rewardList.push_back(make_pair(email , rewards));
+    }
+};
