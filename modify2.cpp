@@ -145,7 +145,12 @@ int main()
     }
 
     cout<<endl;
+
+    cout<<"total products for category 1: " << n1<< endl;
+
     obj1[n1].getprice1();
+
+    cout<<endl;
 
     for(i=0; i<n2; i++)
     {
@@ -155,7 +160,12 @@ int main()
     }
 
     cout<<endl;
+
+    cout<<"total products for category 2: " << n2<< endl;
+
     obj2[n2].getprice2();
+
+    cout<<endl;
 
     for(i=0; i<n3; i++)
     {
@@ -165,7 +175,12 @@ int main()
     }
 
     cout<<endl;
+
+    cout<<"total products for category 3: " << n3<< endl;
+
     obj3[n3].getprice3();
 
+    cout<<endl;
+    
     return 0;
 }
