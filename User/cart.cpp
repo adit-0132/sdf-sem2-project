@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-// #include<--file name-->
 
 using namespace std;
 
@@ -29,21 +28,18 @@ public:
     void calculateTotalPrice()
     {
         double pricePerUnit;
-        double x = -- --;
-        double y = -- --;
-        double z = -- --;
 
         if (category == "1")
         {
-            pricePerUnit = x;
+            pricePerUnit = 10.0;
         }
         else if (category == "2")
         {
-            pricePerUnit = y;
+            pricePerUnit = 20.0;
         }
         else if (category == "3")
         {
-            pricePerUnit = z;
+            pricePerUnit = 30.0;
         }
         else
         {
@@ -54,9 +50,37 @@ public:
         totalPrice = quantity * pricePerUnit;
     }
 
+    void confirm()
+    {
+        int choice;
+        cout << "Please confirm the given details:" << endl;
+        cout << "Category: " << category << endl;
+        cout << "Quantity: " << quantity << endl;
+        cout << "Total Price: $" << totalPrice << endl;
+        cout << "Press 1 to continue and 0 to edit: ";
+        cin >> choice;
+
+        if (choice == 0)
+        {
+            cout << "Enter new category and quantity: ";
+            cin >> category >> quantity;
+            calculateTotalPrice(); // Recalculate total price with new category and quantity
+            displayTotalPrice();   // Display the updated total price
+        }
+        else if (choice == 1)
+        {
+            cout << "Order confirmed." << endl;
+        }
+        else
+        {
+            cout << "Invalid choice. Exiting..." << endl;
+            exit(1);
+        }
+    }
+
     void displayTotalPrice()
     {
-        cout << "Total price: $" << totalPrice << endl;
+        cout << "Total price: ₹" << totalPrice << endl;
     }
 };
 
@@ -67,6 +91,7 @@ int main()
     myCart.chooseCategory();
     myCart.enterQuantity();
     myCart.calculateTotalPrice();
-    myCart.displayTotalPrice();
+    myCart.confirm();
+
     return 0;
 }
