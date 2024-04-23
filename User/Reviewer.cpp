@@ -18,6 +18,7 @@ class Reviewer: public User{
     vector<Rewards> getRewardsVector(){
         return rewards;
     }
+
     //product enter kravoo kiska review de rhe hai
     void addReview(){
         int name;
@@ -48,7 +49,7 @@ class Reviewer: public User{
         points++;
     }
 
-    void login(){
+    void login(ReviewList reviewList, userList user){
         string emailLogin;
         string passwordLogin;
         cout << "Email: ";

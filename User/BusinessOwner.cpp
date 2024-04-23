@@ -82,6 +82,42 @@ class BusinessOwner: public User{
         
     }
 
+     void login(ReviewList reviewList, userList user){
+        string emailLogin;
+        string passwordLogin;
+        cout << "Email: ";
+        cin>>emailLogin;
+        cout << "Password: ";
+        cin>>passwordLogin;
+
+        for(int i =0;i<user.users.size() ;i++){
+            if(user.users[i]->email == emailLogin){
+                if(user.users[i]->password == passwordLogin){
+                    setName(user.users[i]->accountType);
+                    setName(user.users[i]->name);
+                    setEmail(user.users[i]->email);
+                    setPassword(user.users[i]->password);
+                    setAge(user.users[i]->age);
+                    cout<<"Logged IN!";
+                }
+                else{
+                    cout<< "Wrong password\n";
+                }
+            }
+            else{
+                cout<< "User not found\n";
+            }
+        }
+
+        for(int i =0;i<reviewList.reviewList.size() ;i++){
+            if(reviewList.reviewList[i].first == this->email){
+                this->reviews = reviewList.reviewList[i].second;
+            }
+        }
+
+    }
+
+
     void getReviews(){
         cout<< "Reviews bought: \n";
         for(int i= 0;i<reviewsBought.size();i++){
