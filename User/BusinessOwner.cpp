@@ -28,15 +28,12 @@ class BusinessOwner: public User{
             cin>>choice;
             if(choice == 1){
                 cout<< "Enter you payment method"<< endl;
-                cout<< "1. Credit Card\n2. Debit Card\n3. UPI\n4. Net Banking\n5. Cash\n";
+                cout<< "1. Credit Card\n2. Debit Card\n3. UPI\n4. Net Banking\n";
                 payments:
                 int paymentMethod;
                 cout<< "Enter your choice: ";
                 cin>>paymentMethod;
-                if(paymentMethod == 5){
-                    cout<< "You will have to pay cash to the reviewer\n";
-                }
-                else if(paymentMethod == 1 || paymentMethod == 2){
+                if(paymentMethod == 1 || paymentMethod == 2){
                     cout<< "Enter your card details\n";
                     cout<< "Card Number: ";
                     int cardNumber;
