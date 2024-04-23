@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include "./Review/rewards.cpp"
 #include <ctime>
+#include "../Product/Product.cpp"
 
 class Reviewer: public User{
     vector<Review> reviews;
@@ -16,7 +17,17 @@ class Reviewer: public User{
     vector<Rewards> getRewardsVector(){
         return rewards;
     }
+    //product enter kravoo kiska review de rhe hai
     void addReview(){
+        int name;
+        int price;
+        int id;
+        cout<< "Enter name of the product: ";
+        cin>> name;
+        cout<< "Enter price of the product: ";  
+        cin >> price;
+        int id = time(0);
+        Product product = new Product(id , name , price);
         string title;
         string review;
         int stars;
@@ -31,7 +42,7 @@ class Reviewer: public User{
             cout<<"Stars should be less than 5\n";
             goto stars;
         }
-        Review reviewObj = new Review(title, review, stars);
+        Review reviewObj = new Review(title, review, stars , product);
         reviews.push_back(reviewObj);
         points++;
     }

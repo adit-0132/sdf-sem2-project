@@ -8,10 +8,11 @@ class Review{
     Product product;
     
     public:
-    Review(string title, string review, int stars){
+    Review(string title, string review, int stars , Product product){
         this->title = title;
         this->review = review;
         this->stars = stars;
+        this-> product = product;   
     }
     void setTitle(string title){
         this->title = title;
