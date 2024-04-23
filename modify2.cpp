@@ -36,8 +36,33 @@ public:
 
         cout<<endl;
 
-        cout<<"enter product's expiry date: " << endl;
-        cin>>doe;
+        cout<<"does product have expiry date: "<<endl <<"enter 1 for yes or 2 for no" << endl;
+        cin>>choice;
+        if(choice == 1)
+        {
+            cout << "enter expiry date: " << endl;
+            cin>>doe;
+        }
+        else if(choice ==2)
+        {
+            doe = "no expiry date" ;
+        }
+        else
+        {
+            cout<<"enter valid choice" << endl;
+            cout<<endl;
+            cout<<"enter again now" << endl;
+            cin>>choice;
+            if(choice == 1)
+        {
+            cout << "enter expiry date: " << endl;
+            cin>>doe;
+        }
+        else if(choice ==2)
+        {
+            doe = "no expiry date" ;
+        }
+        }
 
         cout<<endl;
     }
