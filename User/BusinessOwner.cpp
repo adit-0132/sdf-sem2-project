@@ -4,10 +4,10 @@
 #include "./user.cpp"
 
 class BusinessOwner: public User{
-    vector<pair<Review>> reviewsBought; 
+    vector<Review> reviewsBought; 
 
     public:
-    void buyReviews(){
+    void buyReviews(ReviewList reviewList){
         cout>> "Enter name of the product for which you want reviews: ";
         int name;
         cin >> name;
