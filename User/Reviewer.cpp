@@ -5,6 +5,7 @@
 #include "./Review/rewards.cpp"
 #include <ctime>
 #include "../Product/Product.cpp"
+#include "./user.cpp
 
 class Reviewer: public User{
     vector<Review> reviews;
